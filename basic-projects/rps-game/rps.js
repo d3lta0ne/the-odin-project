@@ -14,14 +14,34 @@ function playRound(playerSelection, computerSelection) {
         return "WRONG INPUT";    
 
     if(playerSelection == computerSelection){
-        return "it's a tie!";
+        return 0;
     }
     else if( (playerSelection == "rock" && computerSelection == "scissors") 
         ||  (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock")){
-        return "player wins";
+        return 1;
     }
     else{
-        return "computer wins";
+        return 2;
     }
 }
-console.log(playRound("rock", computerPlay()));
+
+function game(){
+    let p_score = 0;
+    let c_score = 0;
+    let tie = 0;
+
+    for(i = 0; i < 5; ++i){
+        let player = prompt("enter an option");
+        let res = playRound(player, computerPlay());
+
+        if(res == 1)
+            p_score++;
+        else if(res == 2)
+            c_score++;
+        else
+            tie++
+        console.log("Player: " + p_score + " Computer: " + c_score + " Tie: " + tie);
+    }
+}
+
+game();
