@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Garan's Rock, Paper, Scissors Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Choose your weapon.</h1>
+    <div class="logs">
+        <span class="title">Logs:</span>
+    </div>
+    <div class="score">
+        <span class="title">Current Score:</span><br>
+        Computer: <span id=compScore>0</span>
+        <br>
+        Human: <span id=playScore>0</span>
+    </div>
+
+    <div class="weapons">
+        <div id="Rock" class="weapon">
+            Rock
+        </div>
+        <div id="Paper" class="weapon">
+            Paper
+        </div>
+        <div id="Scissors" class="weapon">
+            Scissors
+        </div>
+    </div>
+    <script>
+        let computerScore = 0;
+        let playerScore = 0;
+        let round = 1;
+        function addScore(result) {
+            var record = document.createElement("div");
+            var text = document.createTextNode(`Round ${round}:`);
+            var textResult = document.createTextNode(`${result}`);
+            var br = document.createElement("br");
+            var compScore = document.querySelector(`#compScore`);
+            var playScore = document.querySelector(`#playScore`);
+            record.appendChild(text);
+            record.appendChild(br);
+            record.appendChild(textResult);
+            log = document.querySelector(".logs");
+            log.appendChild(record);
+            compScore.innerHTML = `${computerScore}`;
+            playScore.innerHTML = `${playerScore}`;
+            round++;
+            checkScore();
+        }
+        function computerPlay() {
+            let choice = Math.floor(Math.random() * 3);
+            switch (choice) {
+                case 0:
+                    return "Rock";
+                    break;
+                case 1:
+                    return "Paper";
+                    break;
+                case 2:
+                    return "Scissors";
+                    break;
+            }
+        }
+        function playRound(e) {
+            const playerSelection = e.srcElement.id;
+            const computerSelection = computerPlay();
+            let outcome;
+            let winner;
+            let loser;
+            let beatOrTie = "beats";
+            switch (computerSelection) {
+                case "Rock":
+                    if (playerSelection == "Rock") {
+                        beatOrTie = "ties";
+                        outcome = "tied";
+                        winner = computerSelection;
+                        loser = playerSelection;
+                    }
+                    else if (playerSelection == "Paper") {
+                        outcome = "win";
+                        winner = playerSelection;
+                        loser = computerSelection;
+                        playerScore++;
+                    }
+                    else {
+                        outcome = "lose";
+                        loser = playerSelection;
+                        winner = computerSelection;
+                        computerScore++;
+                    }
+                    break;
+                case "Paper":
+                    if (playerSelection == "Paper") {
+                        beatOrTie = "ties";
+                        outcome = "tied";
+                        winner = computerSelection;
+                        loser = playerSelection;
+                    }
+                    else if (playerSelection == "Scissors") {
+                        outcome = "win";
+                        winner = playerSelection;
+                        loser = computerSelection;
+                        playerScore++;
+                    }
+                    else {
+                        outcome = "lose";
+                        loser = playerSelection;
+                        winner = computerSelection;
+                        computerScore++
+                    }
+                    break;
+                case "Scissors":
+                    if (playerSelection == "Scissors") {
+                        beatOrTie = "ties";
+                        outcome = "tied";
+                        winner = computerSelection;
+                        loser = playerSelection;
+                    }
+                    else if (playerSelection == "Rock") {
+                        outcome = "win";
+                        winner = playerSelection;
+                        loser = computerSelection;
+                        playerScore++;
+                    }
+                    else {
+                        outcome = "lose";
+                        loser = playerSelection;
+                        winner = computerSelection;
+                        computerScore++;
+                    }
+                    break;
+            }
+            const result = `You ${outcome}! ${winner} ${beatOrTie} ${loser}`;
+            addScore(result);
+        }
+        function checkScore() {
+            let test = "win";
+            if (computerScore == 5 || playerScore == 5) {
+                if (computerScore > playerScore) {
+                    test = "lose";
+                }
+                alert(`You ${test}!`);
+                reset();
+            }
+            return;
+        }
+        function reset() {
+            computerScore = 0;
+            playerScore = 0;
+            round = 1;
+            while (log.children[1]) {
+                log.removeChild(log.children[1]);
+            }
+            compScore.innerHTML = `${computerScore}`;
+            playScore.innerHTML = `${playerScore}`;
+        }
+        const weapons = document.querySelectorAll('.weapon');
+        weapons.forEach(weapon => weapon.addEventListener('click', playRound));
+    </script>
+</body>
+
+</html>
