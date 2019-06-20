@@ -1,0 +1,22 @@
+#game-container{
+    /* width: 960px; */
+}
+
+.square{
+    box-sizing: border-box;
+    display: block;
+    width: 6.25%;
+    float: left;
+    background: white;
+    border: 2px solid black;
+    text-align: center;
+}
+
+.square:hover{
+    background: red;
+    border: 2px solid "red";
+}
+
+.sketch{
+    background: red;
+}
