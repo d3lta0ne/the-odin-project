@@ -31,3 +31,8 @@ divItem.appendChild(h1Item);
 divItem.appendChild(p2Item);
 
 container.appendChild(divItem);
+
+var btn = document.querySelector('#btn');
+btn.addEventListener('click', () => {
+  alert("Hello--World");
+});
