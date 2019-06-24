@@ -44,4 +44,13 @@ function game(){
     }
 }
 
-game();
+const buttons = document.querySelectorAll('button');
+const res = document.getElementById("result");
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        res.textContent = playRound(button.id.toString(), computerPlay());
+  });
+});
+
+
+// game();
