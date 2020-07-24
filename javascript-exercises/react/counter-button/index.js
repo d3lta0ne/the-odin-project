@@ -14,7 +14,11 @@ class Counter extends React.Component {
   componentDidMount() {
     this.setState({counter: 42});
   }
-  
+
+  componentDidUpdate() {
+    alert("Number of clicks: " + this.state.counter);
+  }
+
   render() {
     return (
       <div>
