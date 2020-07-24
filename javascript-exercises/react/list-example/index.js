@@ -4,6 +4,10 @@ import "./style.css";
 
 function MyList(props) {
   const arr = props.data;
+  /**
+   * Keys are important, because they uniquely identify elements, helping
+   * React understand which items have changed, are added, or are removed.
+   */
   const listItems = arr.map((val, index) => <li key={index}>{val}</li>);
   return <ul>{listItems}</ul>;
 }
