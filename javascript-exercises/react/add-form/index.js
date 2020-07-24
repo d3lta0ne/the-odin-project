@@ -12,6 +12,12 @@ function AddForm() {
 
   function handleSubmit(e) {
     setSum(sum + Number(num));
+    /**
+     * Notice the e.preventDefault(); statement. This statement prevents the default
+     * behavior of the form, which, by default, reloads the page when submitted. In
+     * JavaScript we would use return false; for that, but in React we need to call
+     * preventDefault().
+     */
     e.preventDefault();
   }
 
