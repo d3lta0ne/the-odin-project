@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <script type="text/Javascript" src="script.js" defer></script>
+    <title>NO MOUTH LIBRARY</title>
+  </head>
+  <body>
+    <section class="bookshelf">
+      <h1>NO MOUTH BOOKS</h1>
+      <div class="books"></div>
+    </section>
+
+    <div class="add-form">
+      <form>
+        <label for="title">Book Title</label><br />
+        <input type="text" id="title" name="title" /><br />
+        <label for="author">Author</label><br />
+        <input type="text" id="author" name="author" /><br />
+        <label for="pages"># of Pages</label><br />
+        <input type="number" id="pages" name="pages" /><br />
+
+        <input type="checkbox" id="readStatus" name="status" value="read" />
+        <label for="read">Read</label><br />
+        <!-- <input type="radio" id="not-read" name="status" value="not-read" />
+        <label for="not-read">Not Read</label> -->
+        <button type="button" id="submit">Add Book</button>
+      </form>
+    </div>
+  </body>
+</html>
