@@ -29,8 +29,8 @@ function AddPersonForm(props) {
   );
 }
 
-const mapDipatchToProps = {
+const mapDispatchToProps = {
   addPerson,
 };
 
-export default connect(null, mapDipatchToProps)(AddPersonForm);
+export default connect(null, mapDispatchToProps)(AddPersonForm);
